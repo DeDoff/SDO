@@ -8,6 +8,7 @@ import { Button, Welcome } from '@storybook/react/demo';
 import App from '../components/App/App';
 import { DraggableBlock } from '../components/DraggableBlock/DraggableBlock';
 import { BlockContainer } from '../components/BlockContainer/BlockContainer';
+import { Logo } from '../components/Logo/Logo';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -30,3 +31,5 @@ storiesOf('Draggable', module)
   .add('BlockContainer', () => <BlockContainer blocks={longArr} />)
   ;
    
+storiesOf('Logo', module)
+  .add('logo', () => <Logo />  );
