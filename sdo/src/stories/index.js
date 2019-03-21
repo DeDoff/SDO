@@ -9,6 +9,7 @@ import App from '../components/App/App';
 import { DraggableBlock } from '../components/DraggableBlock/DraggableBlock';
 import { BlockContainer } from '../components/BlockContainer/BlockContainer';
 import { Logo } from '../components/Logo/Logo';
+import { Player } from '../components/AudioPlayer/AudioPlayer';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -31,5 +32,8 @@ storiesOf('Draggable', module)
   .add('BlockContainer', () => <BlockContainer blocks={longArr} />)
   ;
    
-storiesOf('Logo', module)
-  .add('logo', () => <Logo />  );
+// storiesOf('Logo', module)
+//   .add('logo', () => <Logo />  );
+
+storiesOf('Audio', module)
+  .add('player', () => <Player />  );
