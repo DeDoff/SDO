@@ -3,28 +3,33 @@ import Draggable, { DraggableCore } from 'react-draggable'; // Both at the same 
 import './DraggableBlock.css'
 
 const DraggableBlock = (props) => {
-    const [state, setState] = React.useState({
-        activeDrags: 0,
-        deltaPosition: {
-            x: 0, y: 0
-        },
-        controlledPosition: {
-            x: -400, y: 200
-        }
-    });
+    const [activeDrags, setActiveDrags] = React.useState(0);
+
+    const [deltaX, setDeltaX] = React.useState(props.x || 0);
+    const [deltaY, setDeltaY] = React.useState(props.y || 0);
+
+    const handleDrag = (e, ui) => {
+        setDeltaX(deltaX + ui.deltaX);
+        setDeltaY(deltaY + ui.deltaY);
+    };
 
     const onStart = () => {
-        setState({ activeDrags: ++state.activeDrags });
+        let x = activeDrags +1;
+        setActiveDrags(x);
     };
 
     const onStop = () => {
-        setState({ activeDrags: --state.activeDrags });
+        let x = activeDrags -1;
+        setActiveDrags(x);
     };
 
     const dragHandlers = { onStart: onStart, onStop: onStop };
 
-    return <Draggable bounds="parent" {...dragHandlers}>
-            <div className="box">{props.blockText || ''}</div>
+    return <Draggable bounds="parent" onDrag={handleDrag} {...dragHandlers}>
+                <div className="box">{props.blockText || ''}
+                    <div>x: {deltaX.toFixed(0)}, y: {deltaY.toFixed(0)}</div>
+                </div>
+                
         </Draggable>
     
 }

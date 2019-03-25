@@ -12,7 +12,7 @@ const BlockContainer = (props) => {
         <div style={{ height: '1000px', width: '1000px', padding: '10px' }}>
             
             {blocks.map( e=>{
-                return <DraggableBlock blockText={e + ''} key={e}  />
+                return <DraggableBlock blockText={e + ''} key={e} x={e} y={e}/>
             })}
         </div>
     </div>
